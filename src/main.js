@@ -1,28 +1,27 @@
-// Import the necessary modules
-import { Client } from 'node-appwrite';
-
 export default async ({ req, res, log, error }) => {
-  // Initialize the Appwrite client
-  const client = new Client();
-  // client
-  //   .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-  //   .setProject("66686b30000336ef6b28") // Your project ID
-  //   .setKey(process.env.APPWRITE_API_KEY); // Your API key
+  // const client = new Client()
+  //    .setEndpoint('https://cloud.appwrite.io/v1')
+  //    .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
+  //    .setKey(process.env.APPWRITE_API_KEY);
 
-  // Log a message to the console
+  // You can log messages to the console
   log('Hello, Logs!');
 
-  // Log an error to the console
+  // If something goes wrong, log an error
   error('Hello, Errors!');
 
-  // Check the request method
+  // The `req` object contains the request data
   if (req.method === 'GET') {
-    // Log a message to the console
-    
-    // Send a response back to the client
+    // Send a response with the res object helpers
+    // `res.send()` dispatches a string back to the client
     return res.send('Hello, World!');
   }
 
-  // If the request method is not GET, send a method not allowed response
-  return res.status(405).send('Method Not Allowed');
-};
+  // `res.json()` is a handy helper for sending JSON
+  return res.json({
+    motto: 'Build like a team of hundreds_',
+    learn: 'https://appwrite.io/docs',
+    connect: 'https://appwrite.io/discord',
+    getInspired: 'https://builtwith.appwrite.io',
+  });
+}
